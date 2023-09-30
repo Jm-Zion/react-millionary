@@ -5,6 +5,8 @@ import play from '../assets/src_sounds_play.mp3';
 import correct from '../assets/src_sounds_correct.mp3';
 import wrong from '../assets/src_sounds_wrong.mp3';
 
+const TIMEOUT = 3000;
+
 export default function Questions({
   data,
   setStop,
@@ -35,19 +37,19 @@ export default function Questions({
   const handleClick = a => {
     setSelectedAnswer(a);
     setClassName('answer active');
-    delay(3000, () =>
+    delay(TIMEOUT, () =>
       setClassName(a.correct ? 'answer correct' : 'answer wrong')
     );
-    delay(1000, () => {
+    delay(TIMEOUT, () => {
       if (a.correct) {
         correctAnswer();
-        delay(1000, () => {
+        delay(TIMEOUT, () => {
           setQuestionNumber(prev => prev + 1);
           setSelectedAnswer(null);
         });
       } else {
         wrongAnswer();
-        delay(1000, () => {
+        delay(TIMEOUT, () => {
           setStop(true);
         });
       }
