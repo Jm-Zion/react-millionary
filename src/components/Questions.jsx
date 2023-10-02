@@ -50,22 +50,26 @@ export default function Questions({
       } else {
         wrongAnswer();
         delay(TIMEOUT, () => {
-          setStop(true);
+          setQuestionNumber(prev => prev + 1);
+          setSelectedAnswer(null);
+          // setStop(true);
         });
       }
     });
   };
 
+  const letters = ['A', 'B', 'C', 'D'];
+
   return (
     <div className='Questions'>
       <div className='question'>{question?.question}</div>
       <div className='answers'>
-        {question?.answers.map(answer => (
+        {question?.answers.map((answer, i) => (
           <div
             className={selectedAnswer === answer ? className : 'answer'}
             onClick={() => handleClick(answer)}
           >
-            {answer.text}
+            {letters[i]}. {answer.text}
           </div>
         ))}
       </div>

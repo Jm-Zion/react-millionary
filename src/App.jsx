@@ -34,11 +34,33 @@ function App() {
       ],
     },
     {
+      id: 13,
+      question: 'Quel était le déguisement préféré de Timothée quand il était petit ?',
+      answers: [
+        {
+          text: 'Davy Crockett',
+          correct: true,
+        },
+        {
+          text: 'Lucky Luke',
+          correct: false,
+        },
+        {
+          text: 'Asterix',
+          correct: false,
+        },
+        {
+          text: 'Tintin',
+          correct: false,
+        },
+      ],
+    },
+    {
       id: 2,
       question: 'Claire aime chanter, pour ça elle utilise un outil très spécial, duquel s\'agi-t il ?',
       answers: [
         {
-          text: 'Un micro karaoké',
+          text: 'Un micro karaoké Totally Spies!',
           correct: false,
         },
         {
@@ -56,8 +78,30 @@ function App() {
       ],
     },
     {
+      id: 11,
+      question: 'Quelle est l\'invention de Timothée qui a faillit l\'envoyer à l\'hopital ?',
+      answers: [
+        {
+          text: 'Un parachute',
+          correct: true,
+        },
+        {
+          text: 'Des Skis',
+          correct: true,
+        },
+        {
+          text: 'Un Poêle Rocket',
+          correct: true,
+        },
+        {
+          text: 'Il va être jaloux de la personne qui effectue la vidéo',
+          correct: true,
+        },
+      ],
+    },
+    {
       id: 3,
-      question: 'Comment s\'organise claire lorsqu\'elle parle en voyage ? ',
+      question: 'Comment s\'organise Claire lorsqu\'elle part en voyage ? ',
       answers: [
         {
           text: 'Très organisée, elle fait ses valises 2 semaines avant',
@@ -73,6 +117,28 @@ function App() {
         },
         {
           text: '1 semaine avant c\'est très bien',
+          correct: false,
+        },
+      ],
+    },
+    {
+      id: 14,
+      question: 'Ou Timothée à t\'il fait son master ?',
+      answers: [
+        {
+          text: 'Lille',
+          correct: false,
+        },
+        {
+          text: 'Grenoble',
+          correct: true,
+        },
+        {
+          text: 'Montpellier',
+          correct: false,
+        },
+        {
+          text: 'Perpignan',
           correct: false,
         },
       ],
@@ -122,6 +188,29 @@ function App() {
       ],
     },
     {
+      id: 10,
+      question: 'Il a quelques années, montrer de vidéo à sensation fortes à Timothée comportait un risque, quel est ce risque ?',
+      answers: [
+        {
+          text: 'Il va essayer de le reproduire à sa manière à un moment improbable',
+          correct: true,
+        },
+        {
+          text: 'Il va le faire en plus intense encore',
+          correct: false,
+        },
+        {
+          text: 'Il tombe dans les pommes, c\'est trop pour lui',
+          correct: false,
+        },
+        {
+          text: 'Il n\'y a aucun risque',
+          correct: false,
+        },
+      ],
+    },
+
+    {
       id: 6,
       question: 'Quand Claire étudiante, quelle genre de plat se préparait elle ?',
       answers: [
@@ -139,6 +228,28 @@ function App() {
         },
         {
           text: 'Repas rapide, fast-food',
+          correct: false,
+        },
+      ],
+    },
+    {
+      id: 16,
+      question: 'Comment Timothée s\'est rééduqué les poignets après une double fracture ?',
+      answers: [
+        {
+          text: 'Pas de minimum',
+          correct: true,
+        },
+        {
+          text: '1000m',
+          correct: false,
+        },
+        {
+          text: '2000m',
+          correct: false,
+        },
+        {
+          text: '3000m',
           correct: false,
         },
       ],
@@ -166,28 +277,6 @@ function App() {
       ],
     },
     {
-      id: 8,
-      question: 'A quoi ressemble la voiture de Claire ?',
-      answers: [
-        {
-          text: 'Sa Maison',
-          correct: true,
-        },
-        {
-          text: 'Un centre d\'équitation',
-          correct: true,
-        },
-        {
-          text: 'Un studio d\'enregistrment',
-          correct: true,
-        },
-        {
-          text: 'Un garde-manger',
-          correct: true,
-        },
-      ],
-    },
-    {
       id: 9,
       question: 'Comment Timothée prend il soin de sa voiture ?',
       answers: [
@@ -210,95 +299,29 @@ function App() {
       ],
     },
     {
-      id: 10,
-      question: 'Pourquoi ne faut-il pas montrer de vidéo à sensation à Timothée ?',
+      id: 8,
+      question: 'A quoi ressemble la voiture de Claire ?',
       answers: [
         {
-          text: 'Il va éssayer de le faire à sa manière à un moment improbable',
+          text: 'Sa Maison',
           correct: true,
         },
         {
-          text: 'Ca le stress, il ne supporte pas les sensations fortes',
-          correct: false,
-        },
-        {
-          text: 'Il tombe dans les pommes, c\'est trop pour lui',
-          correct: false,
-        },
-        {
-          text: 'Il va être jaloux de la personne qui effectue la vidéo',
-          correct: false,
-        },
-      ],
-    },
-    {
-      id: 11,
-      question: 'Quelle est l\'invention de Timothée qui a faillit l\'envoyer à l\'hopital ?',
-      answers: [
-        {
-          text: 'Un parachute',
+          text: 'Un centre d\'équitation',
           correct: true,
         },
         {
-          text: 'Des Skis',
+          text: 'Un studio d\'enregistrment',
           correct: true,
         },
         {
-          text: 'Un Poêle Rocket',
-          correct: true,
-        },
-        {
-          text: 'Il va être jaloux de la personne qui effectue la vidéo',
+          text: 'Un garde-manger',
           correct: true,
         },
       ],
     },
     {
-      id: 13,
-      question: 'Quel était le déguisement préféré de Timothée quand il était petit ?',
-      answers: [
-        {
-          text: 'Davy Crockett',
-          correct: true,
-        },
-        {
-          text: 'Lucky Luke',
-          correct: false,
-        },
-        {
-          text: 'Asterix',
-          correct: false,
-        },
-        {
-          text: 'Tintin',
-          correct: false,
-        },
-      ],
-    },
-    {
-      id: 14,
-      question: 'Ou Timothée à t\'il fait son master ?',
-      answers: [
-        {
-          text: 'Lille',
-          correct: false,
-        },
-        {
-          text: 'Grenoble',
-          correct: true,
-        },
-        {
-          text: 'Montpellier',
-          correct: false,
-        },
-        {
-          text: 'Perpignan',
-          correct: false,
-        },
-      ],
-    },
-    {
-      id: 14,
+      id: 15,
       question: 'Timothée ne monte que des sommets qui font plus de :',
       answers: [
         {
@@ -319,31 +342,6 @@ function App() {
         },
       ],
     },
-    {
-      id: 15,
-      question: 'Comment Timothée s\'est rééduqué les poignets après une double fracture ?',
-      answers: [
-        {
-          text: 'Pas de minimum',
-          correct: true,
-        },
-        {
-          text: '1000m',
-          correct: false,
-        },
-        {
-          text: '2000m',
-          correct: false,
-        },
-        {
-          text: '3000m',
-          correct: false,
-        },
-      ],
-    }
-
-
-
   ];
 
   const moneyPyramid = useMemo(
@@ -384,9 +382,9 @@ function App() {
             ) : (
               <>
                 <div className='top'>
-                  <div className='timer'>
+                  {/* <div className='timer'>
                     <Timer setStop={setStop} questionNumber={questionNumber} />
-                  </div>
+                  </div>*/}
                 </div>
                 <div className='bottom'>
                   <Questions
@@ -396,24 +394,12 @@ function App() {
                     setQuestionNumber={setQuestionNumber}
                   />
                 </div>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <button onClick={() => { if (questionNumber > 1) { setQuestionNumber(prev => prev - 1) } }}>Question Précédante</button>
+                  <button onClick={() => { if (questionNumber < data.length) { setQuestionNumber(prev => prev + 1) } }}>Question Précédante</button>
+                </div>
               </>
             )}
-          </div>
-          <div className='pyramid'>
-            <ul className='moneyList'>
-              {moneyPyramid.map(money => (
-                <li
-                  className={
-                    questionNumber === money.id
-                      ? 'moneyListItem active'
-                      : 'moneyListItem'
-                  }
-                >
-                  <span className='moneyListItemNumber'>{money.id}</span>
-                  <span className='moneyListItemNumber'>{money.amount}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </>
       ) : (
