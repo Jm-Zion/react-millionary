@@ -8,6 +8,7 @@ import wrong from '../assets/src_sounds_wrong.mp3';
 const TIMEOUT = 3000;
 
 export default function Questions({
+  hideHalf,
   data,
   setStop,
   questionNumber,
@@ -66,12 +67,30 @@ export default function Questions({
 
   const letters = ['A', 'B', 'C', 'D'];
 
+
+  let shuffled = React.useMemo(() => {
+    // Remove 2 answers randomly from question.answers if hideHalf is true The answers must contains the correct answer plus another random answer
+    if (hideHalf) {
+      return data[questionNumber - 1].answers.filter(a => !a.correct).sort(() => Math.random() - 0.5);
+      // const correctAnswer = question.answers.find(a => a.correct);
+      // Pick random element from shuffled 
+      // shuffled.splice(shuffled.indexOf(correctAnswer), 1);
+      // const answers = [...shuffled, correctAnswer];
+      // shuffle answers
+      // answers.sort(() => Math.random() - 0.5);
+    }
+    return [];
+
+  }, [hideHalf, data, questionNumber])
+
+  // Randomly hide two answers
   return (
     <div className='Questions'>
       <div className='question'>{question?.question}</div>
       <div className='answers'>
         {question?.answers.map((answer, i) => (
           <div
+            style={{ display: shuffled.length > 0 ? shuffled[0].text === answer.text || shuffled[1].text === answer.text ? 'none' : undefined : undefined }}
             className={selectedAnswer === answer ? className : 'answer'}
             onClick={() => handleClick(answer)}
           >

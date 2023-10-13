@@ -1,14 +1,20 @@
 import { useState, useEffect, useMemo } from 'react';
 import Timer from './components/Timer';
+import useSound from 'use-sound';
 import Questions from './components/Questions';
 import './App.css';
+import startSound from './assets/src_end.wav';
 import Start from './components/Start';
+import Fifty from './assets/src_jocker_50_50.wav';
 
 function App() {
+  const [hideHalf, setHideHalf] = useState(false);
   const [username, setUsername] = useState(null);
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
   const [earned, setEarned] = useState('$ 0');
+  const [runFiftySound] = useSound(Fifty)
+  const [runEnd] = useSound(startSound)
 
   const data = [
     {
@@ -21,7 +27,7 @@ function App() {
         },
         {
           text: 'Sa première dent de lait',
-          correct: true,
+          correct: false,
         },
         {
           text: 'Son gouter',
@@ -86,16 +92,16 @@ function App() {
           correct: true,
         },
         {
-          text: 'Des Skis',
+          text: 'Des Skis cloutés',
           correct: true,
         },
         {
           text: 'Un Poêle Rocket',
-          correct: true,
+          correct: false,
         },
         {
-          text: 'Il va être jaloux de la personne qui effectue la vidéo',
-          correct: true,
+          text: 'Un vélo éléctrique',
+          correct: false,
         },
       ],
     },
@@ -189,7 +195,7 @@ function App() {
     },
     {
       id: 10,
-      question: 'Il a quelques années, montrer de vidéo à sensation fortes à Timothée comportait un risque, quel est ce risque ?',
+      question: 'Il a quelques années, montrer une vidéo à sensation fortes à Timothée comportait un risque, lequel ?',
       answers: [
         {
           text: 'Il va essayer de le reproduire à sa manière à un moment improbable',
@@ -212,7 +218,7 @@ function App() {
 
     {
       id: 6,
-      question: 'Quand Claire étudiante, quelle genre de plat se préparait elle ?',
+      question: 'Quand Claire était étudiante, quelle genre de plat se préparait elle ?',
       answers: [
         {
           text: 'Des pâtes à toute les sauces',
@@ -238,7 +244,7 @@ function App() {
       answers: [
         {
           text: 'En faisait du vélo',
-          correct: true,
+          correct: false,
         },
         {
           text: 'En Jouant du Volley',
@@ -250,13 +256,13 @@ function App() {
         },
         {
           text: 'En jouant au babyfoot',
-          correct: false,
+          correct: true,
         },
       ],
     },
     {
       id: 7,
-      question: 'Parmi les continents suivants, quels est le continent qu\'elle n\'a pas visité ?',
+      question: 'Parmi les continents suivants, quel est le continent qu\'elle n\'a pas visité ?',
       answers: [
         {
           text: 'Amérique',
@@ -367,18 +373,24 @@ function App() {
   );
 
   useEffect(() => {
+    setHideHalf(false);
     // Show the previous question's amount unless user is on the first question
     questionNumber > 1 &&
       setEarned(moneyPyramid.find(m => m.id === questionNumber - 1).amount);
   }, [moneyPyramid, questionNumber]);
 
+  useEffect(() => {
+    if (questionNumber === data.length) {
+      runEnd()
+    }
+  }, [questionNumber])
   return (
     <div className='App'>
       {username ? (
         <>
           <div className='main'>
-            {stop ? (
-              <h1 className='endText'>You earned: {earned}</h1>
+            {questionNumber === data.length ? (
+              <h1 className='endText'>Merci à tous !</h1>
             ) : (
               <>
                 <div className='top'>
@@ -388,9 +400,13 @@ function App() {
                   <div className="question-title">
                     Question n°{questionNumber}
                   </div>
+                  <div className="fifty-fifty" onClick={() => { setHideHalf(prev => !prev); runFiftySound() }}>
+                    50/50
+                  </div>
                 </div>
                 <div className='bottom'>
                   <Questions
+                    hideHalf={hideHalf}
                     data={data}
                     setStop={setStop}
                     questionNumber={questionNumber}
@@ -399,7 +415,7 @@ function App() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                   <button onClick={() => { if (questionNumber > 1) { setQuestionNumber(prev => prev - 1) } }}>Question Précédente</button>
-                  <button onClick={() => { if (questionNumber < data.length) { setQuestionNumber(prev => prev + 1) } }}>Question Suivante</button>
+                  <button onClick={() => { if (questionNumber <= data.length) { setQuestionNumber(prev => prev + 1) } }}>Question Suivante</button>
                 </div>
               </>
             )}

@@ -5,6 +5,21 @@
   color: #fff;
 }
 
+.fifty-fifty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  border-radius: 5%;
+  border: 2px solid #fff;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  padding: 10px;
+  bottom: 150px;
+  right: 80px;
+}
+
 .question-title {
   display: flex;
   align-items: center;
