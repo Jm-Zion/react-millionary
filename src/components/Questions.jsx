@@ -13,6 +13,7 @@ export default function Questions({
   questionNumber,
   setQuestionNumber,
 }) {
+  const didClick = React.useRef({ value: false });
   const [question, setQuestion] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [className, setClassName] = useState('answer');
@@ -35,27 +36,32 @@ export default function Questions({
   };
 
   const handleClick = a => {
-    setSelectedAnswer(a);
-    setClassName('answer active');
-    delay(TIMEOUT, () =>
-      setClassName(a.correct ? 'answer correct' : 'answer wrong')
-    );
-    delay(TIMEOUT, () => {
-      if (a.correct) {
-        correctAnswer();
-        delay(TIMEOUT, () => {
-          setQuestionNumber(prev => prev + 1);
-          setSelectedAnswer(null);
-        });
-      } else {
-        wrongAnswer();
-        delay(TIMEOUT, () => {
-          setQuestionNumber(prev => prev + 1);
-          setSelectedAnswer(null);
-          // setStop(true);
-        });
-      }
-    });
+    if (didClick.current.value === false) {
+      didClick.current.value = true;
+      setSelectedAnswer(a);
+      setClassName('answer active');
+      delay(TIMEOUT, () => {
+        setClassName(a.correct ? 'answer correct' : 'answer wrong');
+        didClick.current.value = false;
+
+      });
+      delay(TIMEOUT, () => {
+        if (a.correct) {
+          correctAnswer();
+          delay(TIMEOUT, () => {
+            setQuestionNumber(prev => prev + 1);
+            setSelectedAnswer(null);
+          });
+        } else {
+          wrongAnswer();
+          delay(TIMEOUT, () => {
+            setQuestionNumber(prev => prev + 1);
+            setSelectedAnswer(null);
+            // setStop(true);
+          });
+        }
+      });
+    }
   };
 
   const letters = ['A', 'B', 'C', 'D'];

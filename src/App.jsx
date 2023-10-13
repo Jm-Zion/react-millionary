@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import Timer from './components/Timer';
 import Questions from './components/Questions';
 import './App.css';
 import Start from './components/Start';
@@ -67,7 +68,7 @@ function App() {
           correct: false,
         },
         {
-          text: 'Un fouet',
+          text: 'Un fouet de cuisine',
           correct: true,
         },
         {
@@ -81,7 +82,7 @@ function App() {
       question: 'Quelle est l\'invention de Timothée qui a faillit l\'envoyer à l\'hopital ?',
       answers: [
         {
-          text: 'Un parachute',
+          text: 'Un Parachute',
           correct: true,
         },
         {
@@ -236,19 +237,19 @@ function App() {
       question: 'Comment Timothée s\'est rééduqué les poignets après une double fracture ?',
       answers: [
         {
-          text: 'Pas de minimum',
+          text: 'En faisait du vélo',
           correct: true,
         },
         {
-          text: '1000m',
+          text: 'En Jouant du Volley',
           correct: false,
         },
         {
-          text: '2000m',
+          text: 'Chez le Kiné ( Avec Jauffrey )',
           correct: false,
         },
         {
-          text: '3000m',
+          text: 'En jouant au babyfoot',
           correct: false,
         },
       ],
@@ -381,9 +382,12 @@ function App() {
             ) : (
               <>
                 <div className='top'>
-                  {/* <div className='timer'>
+                  <div className='timer'>
                     <Timer setStop={setStop} questionNumber={questionNumber} />
-                  </div>*/}
+                  </div>
+                  <div className="question-title">
+                    Question n°{questionNumber}
+                  </div>
                 </div>
                 <div className='bottom'>
                   <Questions
@@ -394,8 +398,8 @@ function App() {
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <button onClick={() => { if (questionNumber > 1) { setQuestionNumber(prev => prev - 1) } }}>Question Précédante</button>
-                  <button onClick={() => { if (questionNumber < data.length) { setQuestionNumber(prev => prev + 1) } }}>Question Précédante</button>
+                  <button onClick={() => { if (questionNumber > 1) { setQuestionNumber(prev => prev - 1) } }}>Question Précédente</button>
+                  <button onClick={() => { if (questionNumber < data.length) { setQuestionNumber(prev => prev + 1) } }}>Question Suivante</button>
                 </div>
               </>
             )}
