@@ -60,7 +60,7 @@ function App() {
       question: 'Claire aime chanter, pour ça elle utilise un outil très spécial, duquel s\'agi-t il ?',
       answers: [
         {
-          text: 'Un micro karaoké Totally Spies!',
+          text: 'Un micro karaoké',
           correct: false,
         },
         {
